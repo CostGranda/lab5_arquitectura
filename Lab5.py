@@ -1,4 +1,7 @@
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except RuntimeError:
+    print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.")
 from time import sleep
 
 # Columnas
@@ -16,94 +19,107 @@ ROW4 = 12
 ROW5 = 1
 ROW6 = 7
 ROW7 = 8
-columns = [COL1, COL2, COL3, COL4, COL5]
-rows = [ROW1, ROW2, ROW3, ROW4, ROW5, ROW6, ROW7]
+COLUMNS = [COL1, COL2, COL3, COL4, COL5]
+ROWS = [ROW1, ROW2, ROW3, ROW4, ROW5, ROW6, ROW7]
 
 
 def setup_leds():
     """Configura los leds en modo salida"""
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(columns, GPIO.OUT)
-    GPIO.setup(rows, GPIO.OUT)
+    GPIO.setup(COLUMNS, GPIO.OUT)
+    GPIO.setup(ROWS, GPIO.OUT)
 
 
 def leds_off():
     """Apaga todos los leds"""
-    GPIO.output(columns, GPIO.HIGH)
-    GPIO.output(rows, GPIO.HIGH)
+    GPIO.output(COLUMNS, GPIO.HIGH)
+    GPIO.output(ROWS, GPIO.HIGH)
 
-
+# Configura los pines de salida para la Matriz 
 setup_leds()
 
 
 def show_j():
-    # Para la J
+    """Muestra la J en la matriz"""
     leds_off()
     GPIO.output(COL1, GPIO.HIGH)
     GPIO.output([ROW2, ROW3, ROW7], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL2, GPIO.HIGH)
-    GPIO.output([ROW1, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[::6], GPIO.LOW)
     sleep(0.1)
     leds_off()
 
     GPIO.output(COL3, GPIO.HIGH)
-    GPIO.output([ROW1, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[::6], GPIO.LOW)
     sleep(0.1)
     leds_off()
 
     GPIO.output(COL4, GPIO.HIGH)
-    GPIO.output([ROW1, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[::6], GPIO.LOW)
     sleep(0.1)
     leds_off()
 
     GPIO.output(COL5, GPIO.HIGH)
-    GPIO.output([ROW2, ROW3, ROW4, ROW5, ROW6, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[1:], GPIO.LOW)
     sleep(0.1)
     leds_off()
 
 
 def show_a():
+    """Muestra la A en la matriz"""
     leds_off()
     GPIO.output(COL1, GPIO.HIGH)
-    GPIO.output([ROW1, ROW2, ROW3, ROW4, ROW5, ROW6], GPIO.LOW)
+    GPIO.output(ROWS, GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL2, GPIO.HIGH)
     GPIO.output([ROW3, ROW7], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL3, GPIO.HIGH)
     GPIO.output([ROW3, ROW7], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL4, GPIO.HIGH)
     GPIO.output([ROW3, ROW7], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL5, GPIO.HIGH)
-    GPIO.output([ROW1, ROW2, ROW3, ROW4, ROW5, ROW6], GPIO.LOW)
-
-
+    GPIO.output(ROWS[:-1], GPIO.LOW)
+    sleep(0.1)
+    leds_off()
 
 def show_d():
+    """Muestra la D en la matriz"""
     leds_off()
     GPIO.output(COL1, GPIO.HIGH)
-    GPIO.output([ROW1, ROW2, ROW3, ROW4, ROW5, ROW6,ROW7], GPIO.LOW)
+    GPIO.output(ROWS, GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL2, GPIO.HIGH)
-    GPIO.output([ROW1, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[::6], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL3, GPIO.HIGH)
-    GPIO.output([ROW1, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[::6], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL4, GPIO.HIGH)
-    GPIO.output([ROW1, ROW7], GPIO.LOW)
+    GPIO.output(ROWS[::6], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
     GPIO.output(COL5, GPIO.HIGH)
-    GPIO.output([ROW1, ROW2, ROW3, ROW4, ROW5, ROW6], GPIO.LOW)
+    GPIO.output(ROWS[1:6], GPIO.LOW)
+    sleep(0.1)
+    leds_off()
