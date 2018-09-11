@@ -17,20 +17,19 @@ def show_a():
 
 
 def show_d():
-    
     print("Debe mmotrar la D")
     img = PhotoImage(file="letter_D.png")
     c.create_image(100, 120, anchor="center", image=img)
     c.img = img
 
 
-ventana = Tk()
-ventana.geometry("400x300")
-ventana.title("Laboratorio 5!")
-c = Canvas(ventana, width=600, height=600)
+MAIN_WINDOW = Tk()
+MAIN_WINDOW.geometry("400x300")
+MAIN_WINDOW.title("Laboratorio 5!")
+c = Canvas(MAIN_WINDOW, width=600, height=600)
 c.place(x=150, y=20)
-Button(ventana, text="Mostrar la J", command=show_j).place(x=20, y=20)
-Button(ventana, text="Mostrar la A", command=show_a).place(x=20, y=60)
-Button(ventana, text="Mostrar la D", command=show_d).place(x=20, y=100)
-Button(ventana, text="Salir", command=ventana.quit).place(x=20, y=200)
-ventana.mainloop()
+Button(MAIN_WINDOW, text="Mostrar la J", command=show_j).place(x=20, y=20)
+Button(MAIN_WINDOW, text="Mostrar la A", command=show_a).place(x=20, y=60)
+Button(MAIN_WINDOW, text="Mostrar la D", command=show_d).place(x=20, y=100)
+Button(MAIN_WINDOW, text="Salir", command=MAIN_WINDOW.quit).place(x=20, y=200)
+MAIN_WINDOW.mainloop()
