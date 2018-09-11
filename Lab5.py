@@ -1,6 +1,6 @@
 try:
     import RPi.GPIO as GPIO
-except RuntimeError:
+except (RuntimeError, ModuleNotFoundError):
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.")
 from time import sleep
 
@@ -34,10 +34,6 @@ def leds_off():
     """Apaga todos los leds"""
     GPIO.output(COLUMNS, GPIO.HIGH)
     GPIO.output(ROWS, GPIO.HIGH)
-
-
-# Configura los pines de salida para la Matriz
-setup_leds()
 
 
 def show_j():
