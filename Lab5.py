@@ -35,7 +35,8 @@ def leds_off():
     GPIO.output(COLUMNS, GPIO.HIGH)
     GPIO.output(ROWS, GPIO.HIGH)
 
-# Configura los pines de salida para la Matriz 
+
+# Configura los pines de salida para la Matriz
 setup_leds()
 
 
@@ -95,6 +96,7 @@ def show_a():
     GPIO.output(ROWS[:-1], GPIO.LOW)
     sleep(0.1)
     leds_off()
+
 
 def show_d():
     """Muestra la D en la matriz"""
