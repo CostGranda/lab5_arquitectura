@@ -1,5 +1,9 @@
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except (RuntimeError, ModuleNotFoundError):
+    print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.")
 from time import sleep
+import threading
 
 """Configura los leds en modo salida"""
 #voltaje
@@ -20,17 +24,11 @@ def leds_off():
     GPIO.output(cols, GPIO.HIGH)
     GPIO.output(rows, GPIO.HIGH)
 
-setup_leds()
-try:
-    while 1:
-        leds_off()
-        #GPIO.output(COL1, GPIO.HIGH)
-        GPIO.output(ROW1, GPIO.LOW)
-        sleep(0.1)
-        leds_off()
-        #GPIO.output(COL1, GPIO.HIGH)
-        GPIO.output(ROW2, GPIO.LOW)
-        sleep(0.1)
-        leds_off()
-except KeyboardInterrupt:
-    GPIO.cleanup()
+def nose():
+    try:
+        while 1:
+            print("Esto es una secuencia")
+            sleep(5)
+    except KeyboardInterrupt:
+        print("Detenido")
+threading.Thread(target=nose).start()
