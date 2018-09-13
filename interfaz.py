@@ -1,8 +1,8 @@
 import tkinter as tk
-from abcdario import show_g, show_a, show_n, show_d, show_r, clean, leds_off, show_l, show_z, show_c, show_o, show_j, show_s, setup_pin
+#from abcdario import show_g, show_a, show_n, show_d, show_r, clean, leds_off, show_l, show_z, show_c, show_o, show_j, show_s, setup_pin
 import tkinter.font
 from time import sleep
-import Lab5 
+#import Lab5 
 
 
 root = tk.Tk()
@@ -16,6 +16,8 @@ integrantes = """
 Andrés Alcaraz    ???
 David Rojas       1017248534
 Jorge Luis Granda 1042770436
+
+Ingeniero Hernando Vanegas López
 """
 label = tk.Label(text="Nombre: Alexander Quintero Rosso 1037645440 \n" +
 "       Sebastian Rivera Giraldo\n"+
