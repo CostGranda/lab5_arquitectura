@@ -62,7 +62,7 @@ def btn_rojas():
 
 def generar():
     px = 50
-    py = 210
+    py = 220
     label = ['G', 'R', 'A', 'N', 'D', 'A', 'L', 'C', 'R', 'Z', 'O', 'J', 'S']
     letras_ind = [show_g, show_r, show_a, show_n, show_d, show_a,
                   show_l, show_c, show_r, show_z, show_o, show_j, show_s]
