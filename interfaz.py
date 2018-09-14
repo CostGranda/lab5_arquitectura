@@ -1,15 +1,15 @@
 import tkinter as tk
 import tkinter.font
 from time import sleep
-from abcdario import show_g, show_a, show_n, show_d, show_r, clean, leds_off, show_l, show_z, show_c, show_o, show_j, show_s, setup_pin
+from abcdario import show_g, show_a, show_n, show_d, show_r, clean, leds_off, show_l, show_z, show_c, show_o, show_j, show_s
 
 
 root = tk.Tk()
 root.geometry("1200x800")
 root.title("apellidos MATRIZ DE LEDS")
-fuente = tkinter.font.Font(family='helvetica', size=20, weight="bold")
-fuente2 = tkinter.font.Font(family='helvetica', size=12, weight="bold")
-fuente3 = tkinter.font.Font(family='helvetica', size=120, weight="bold")
+FUENTE_1 = tkinter.font.Font(family='helvetica', size=20, weight="bold")
+FUENTE_2 = tkinter.font.Font(family='helvetica', size=12, weight="bold")
+FUENTE_3 = tkinter.font.Font(family='helvetica', size=120, weight="bold")
 
 integrantes = """
 Andrés Alcaraz    ???
@@ -18,7 +18,7 @@ Jorge Luis Granda 1042770436
 
 Ingeniero Hernando Vanegas López
 """
-label = tk.Label(text=integrantes, font=fuente, bg="#000000", fg="#F4845F")
+label = tk.Label(text=integrantes, font=FUENTE_1, bg="#000000", fg="#F4845F")
 label.pack(fill=tk.X)
 
 granda = [show_g, show_r, show_a, show_n, show_d, show_a]
@@ -69,29 +69,34 @@ def generar():
     apellidos = 'GRANDALCRZOJS'
     a = 0
     for letra in apellidos:
-        label[a] = tk.Button(text=letra, font=fuente2,
-                             command=letras_ind[a], bd=5)
-        label[a].place(x=px, y=py, height=70, width=70)
+        label[a] = tk.Button(text=letra, font=FUENTE_2,
+                             command=letras_ind[a], bd=5).place(x=px, y=py, height=70, width=70)
         px = px+100
-        if(a == 5):
+        if a == 5:
             px = 50
             py = py+100
-        elif(a == 9):
+        elif a == 9:
             px = 50
             py = py+100
-        a = a+1
+        a += 1
+
+
+def chao_papa():
+    root.quit()
+    clean()
 
 
 generar()
 
-lbl_resultado = tk.Label(root, text="", font=fuente3,
-                         bg="#000000", fg="#F27059")
-lbl_resultado.place(x=850, y=200, height=400, width=400)
-boton_granda = tk.Button(text="GRANDA", command=btn_granda, bd=4)
-boton_granda.place(x=850, y=610, height=60, width=70)
-boton_alcaraz = tk.Button(text="ALCARAZ", command=btn_alcaraz, bd=4)
-boton_alcaraz.place(x=950, y=610, height=60, width=90)
-boton_rojas = tk.Button(text="ROJAS", command=btn_rojas, bd=4)
-boton_rojas.place(x=1050, y=610, height=60, width=100)
+lbl_resultado = tk.Label(root, text="", font=FUENTE_3,
+                         bg="#000000", fg="#F27059").place(x=850, y=200, height=400, width=400)
+boton_granda = tk.Button(text="GRANDA", command=btn_granda, bd=4).place(
+    x=850, y=610, height=60, width=70)
+boton_alcaraz = tk.Button(text="ALCARAZ", command=btn_alcaraz, bd=4).place(
+    x=950, y=610, height=60, width=90)
+boton_rojas = tk.Button(text="ROJAS", command=btn_rojas, bd=4).place(
+    x=1050, y=610, height=60, width=100)
+boton_salir = tk.Button(text="Chao PAPÁ", command=chao_papa, bd=4).place(
+    x=850, y=610, height=60, width=100)
 
 root.mainloop()
