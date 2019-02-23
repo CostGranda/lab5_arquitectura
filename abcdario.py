@@ -798,3 +798,5 @@ def show_z():
         GPIO.output([Row1, Row2, Row7], GPIO.LOW)
         sleep(0.01)
         leds_off()
+
+setup_pin()
